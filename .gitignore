@@ -1,0 +1,11 @@
+cat > .gitignore <<'EOF'
+.venv/
+store/
+__pycache__/
+.env
+data/raw/
+data/processed/*.csv
+store_dump.csv
+store_map.png
+.DS_Store
+EOF
