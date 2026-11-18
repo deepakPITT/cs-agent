@@ -1,13 +1,16 @@
-Drafts replies to support tickets by retrieving similar past resolved tickets
-(Chroma + sentence-transformers) and asking Claude to write a reply grounded in them.
-Includes a CLI and a `/draft` HTTP API. No UI yet.
+Built an end-to-end RAG pipeline that drafts customer-support replies from past resolved tickets. It uses PII redaction, semantic retrieval, hallucination guards (“NEEDS AGENT” fallback), a leave-one-out evaluation harness, and a FastAPI /draft service.
 
 ## How it works
 ```
 ticket -> redact PII -> embed -> Chroma search (top-k similar tickets)
        -> prompt with examples -> Claude draft  (or NEEDS AGENT if not covered)
+
 ```
+
+Tech used:
+Python 3.12 · Chroma (vector DB) · sentence-transformers (bge-small-en-v1.5 embeddings) · Anthropic Claude API · FastAPI + Uvicorn · pandas · Hugging Face datasets (Bitext data) · matplotlib / scikit-learn (embedding plots)
 ## Quick setup (Python 3.12)
+
 ```bash
 git clone https://github.com/YOUR_USERNAME/cs-agent.git
 cd cs-agent
